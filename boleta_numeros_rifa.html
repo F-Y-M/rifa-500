@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boleta de Números - Rifa 20 Septiembre</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+        
+        .prize-info {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .prize-amount {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .prize-date {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .legend-box {
+            width: 25px;
+            height: 25px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .available {
+            background: #26de81;
+            color: white;
+            border: 2px solid #20bf6b;
+        }
+        
+        .reserved {
+            background: #f39c12;
+            color: white;
+            border: 2px solid #e67e22;
+        }
+        
+        .sold {
+            background: #e74c3c;
+            color: white;
+            border: 2px solid #c0392b;
+        }
+        
+        .numbers-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .number-cell {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .number-available {
+            background: #26de81;
+            color: white;
+            border-color: #20bf6b;
+        }
+        
+        .number-available:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(38, 222, 129, 0.4);
+        }
+        
+        .number-reserved {
+            background: #f39c12;
+            color: white;
+            border-color: #e67e22;
+            position: relative;
+        }
+        
+        .number-reserved:hover {
+            transform: scale(1.05);
+        }
+        
+        .number-reserved::after {
+            content: "📋";
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            font-size: 10px;
+        }
+        
+        .number-sold {
+            background: #e74c3c;
+            color: white;
+            border-color: #c0392b;
+            position: relative;
+            cursor: default;
+        }
+        
+        .number-sold::after {
+            content: "✅";
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            font-size: 10px;
+        }
+        
+        .number-sold::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: white;
+            transform: translateY(-50%);
+        }
+        
+        .contact-info {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .contact-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .contact-text {
+            font-size: 14px;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        
+        .whatsapp-btn {
+            background: #25d366;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .whatsapp-btn:hover {
+            background: #128c7e;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .stat-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border-left: 4px solid #26de81;
+        }
+        
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #7f8c8d;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 600px) {
+            .numbers-grid {
+                grid-template-columns: repeat(8, 1fr);
+                gap: 6px;
+            }
+            
+            .number-cell {
+                font-size: 12px;
+            }
+            
+            .legend {
+                gap: 15px;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">🎯 BOLETA DE NÚMEROS</div>
+            <div class="subtitle">Selecciona tu número de la suerte</div>
+        </div>
+        
+        <div class="prize-info">
+            <div class="prize-amount">🏆 PREMIO: $500,000 PESOS</div>
+            <div class="prize-date">Sorteo: 20 de Septiembre 2024 | Solo $10,000</div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="disponibles">93</div>
+                <div class="stat-label">Números Disponibles</div>
+            </div>
+            <div class="stat-card" style="border-left-color: #f39c12;">
+                <div class="stat-number" id="apartados">7</div>
+                <div class="stat-label">Números Apartados</div>
+            </div>
+        </div>
+        
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-box available">✓</div>
+                <span>Disponible</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box reserved">📋</div>
+                <span>Apartado (no cancelado)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box sold">✅</div>
+                <span>Cancelados (vendido)</span>
+            </div>
+        </div>
+        
+        <div class="numbers-grid" id="numbersGrid">
+            <!-- Los números se generarán con JavaScript -->
+        </div>
+        
+        <div class="contact-info">
+            <div class="contact-title">¡Aparta tu número ahora!</div>
+            <div class="contact-text">Los números apartados tienen tiempo limitado para cancelar el pago</div>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 15px;">
+                <button class="whatsapp-btn" onclick="openWhatsApp()">
+                    📱 Contactar por WhatsApp
+                </button>
+                <button class="whatsapp-btn" style="background: #e74c3c;" onclick="cancelarNumero()">
+                    💳 Comprar Número
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Números apartados (no cancelados)
+        const numerosApartados = [5, 19, 26, 27, 29, 49, 59, 85, 89];
+        const numerosCancelados = []; // Ejemplo: [12, 34, 56]
+
+        document.getElementById('apartados').textContent = numerosApartados. length
+        document.getElementById('disponibles').textContent = 100 - numerosApartados.length - numerosCancelados.length;
+        // Números cancelados/vendidos (puedes agregar números aquí cuando se vendan)
+        
+        // Generar la grilla de números
+        function generarGrilla() {
+            const grid = document.getElementById('numbersGrid');
+            
+            for (let i = 0; i <= 99; i++) {
+                const numeroFormateado = i.toString().padStart(2, '0');
+                const cell = document.createElement('div');
+                cell.className = 'number-cell';
+                cell.textContent = numeroFormateado;
+                
+                if (numerosCancelados.includes(i)) {
+                    // Número vendido/cancelado
+                    cell.className += ' number-sold';
+                    cell.title = `Número ${numeroFormateado} - VENDIDO`;
+                } else if (numerosApartados.includes(i)) {
+                    // Número apartado
+                    cell.className += ' number-reserved';
+                    cell.title = `Número ${numeroFormateado} - APARTADO (pendiente de pago) - Clic para cancelar`;
+                    cell.onclick = () => cancelarNumeroEspecifico(numeroFormateado);
+                } else {
+                    // Número disponible
+                    cell.className += ' number-available';
+                    cell.title = `Número ${numeroFormateado} - DISPONIBLE - Clic para apartar`;
+                    cell.onclick = () => apartarNumero(numeroFormateado);
+                }
+                
+                grid.appendChild(cell);
+            }
+        }
+        
+        // Función para apartar número disponible
+        function apartarNumero(numero) {
+            const mensaje = `¡Hola! Quiero apartar el número *${numero}* de la rifa del 20 de septiembre. 🎯`;
+            const url = `https://wa.me/57315611437?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
+        }
+        
+        // Función para cancelar/comprar número específico (apartado)
+        function cancelarNumeroEspecifico(numero) {
+            const mensaje = `¡Hola! Quiero *COMPRAR* el número *${numero}* que tengo apartado de la rifa del 20 de septiembre. Estoy listo para hacer el pago de $10,000. 💰`;
+            const url = `https://wa.me/57315611437?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
+        }
+        
+        // Función para cancelar número general
+        function cancelarNumero() {
+            const mensaje = `¡Hola! Quiero *COMPRAR* un número de la rifa del 20 de septiembre. Estoy listo para hacer el pago de $10,000. ¿Qué números tengo apartados? 💰`;
+            const url = `https://wa.me/57315611437?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
+        }
+        
+        // Función para contacto general
+        function openWhatsApp() {
+            const mensaje = `¡Hola! Me interesa participar en la rifa del 20 de septiembre. ¿Podrías darme más información? 🎯`;
+            const url = `https://wa.me/57315611437?text=${encodeURIComponent(mensaje)}`;
+            window.open(url, '_blank');
+        }
+        
+        // Generar la grilla al cargar la página
+        document.addEventListener('DOMContentLoaded', generarGrilla);
+        
+        // Agregar efecto de hover mejorado
+        document.addEventListener('DOMContentLoaded', function() {
+            const style = document.createElement('style');
+            style.textContent = `
+                .number-available:hover::after {
+                    content: "¡Disponible!";
+                    position: absolute;
+                    bottom: -25px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: #2c3e50;
+                    color: white;
+                    padding: 4px 8px;
+                    border-radius: 4px;
+                    font-size: 10px;
+                    white-space: nowrap;
+                    z-index: 1000;
+                }
+                
+                .number-reserved:hover::before {
+                    content: "Clic para cancelar";
+                    position: absolute;
+                    bottom: -25px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: #f39c12;
+                    color: white;
+                    padding: 4px 8px;
+                    border-radius: 4px;
+                    font-size: 10px;
+                    white-space: nowrap;
+                    z-index: 1000;
+                }
+                
+                .number-sold:hover::before {
+                    content: "VENDIDO";
+                    position: absolute;
+                    bottom: -25px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: #e74c3c;
+                    color: white;
+                    padding: 4px 8px;
+                    border-radius: 4px;
+                    font-size: 10px;
+                    white-space: nowrap;
+                    z-index: 1000;
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>
