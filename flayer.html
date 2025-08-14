@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rifa Familiar - 20 Septiembre</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+        
+        .promo-card {
+            width: 400px;
+            height: 600px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            margin: 20px auto;
+        }
+        
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="white" opacity="0.8"/><circle cx="80" cy="30" r="1.5" fill="white" opacity="0.6"/><circle cx="60" cy="70" r="1" fill="white" opacity="0.9"/><circle cx="30" cy="80" r="1.5" fill="white" opacity="0.7"/><circle cx="90" cy="60" r="1" fill="white" opacity="0.8"/></svg>') repeat;
+            animation: sparkle 3s ease-in-out infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        .header {
+            text-align: center;
+            padding: 30px 20px 20px;
+            color: white;
+        }
+        
+        .title {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            background: rgba(255,255,255,0.95);
+            margin: 20px;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .price-section {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .price-label {
+            font-size: 14px;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+        
+        .price {
+            font-size: 32px;
+            font-weight: 800;
+            margin: 5px 0;
+        }
+        
+        .price-benefit {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        
+        .benefits {
+            text-align: left;
+            margin: 20px 0;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            margin: 12px 0;
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .benefit-icon {
+            width: 20px;
+            height: 20px;
+            background: #4ecdc4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-weight: bold;
+            color: white;
+            font-size: 12px;
+        }
+        
+        .date-section {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .date-label {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        .date {
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+        
+        .cta-section {
+            background: linear-gradient(45deg, #26de81, #20bf6b);
+            color: white;
+            padding: 20px;
+            margin: 20px -25px -25px -25px;
+            border-radius: 0 0 15px 15px;
+            text-align: center;
+        }
+        
+        .cta-text {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .cta-subtext {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        
+        .money-emoji {
+            font-size: 40px;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="promo-card">
+        <div class="sparkles"></div>
+        
+        <div class="header">
+            <div class="title">🎯 Quieres Ganarte $500 mil pesos?</div>
+            <div class="subtitle">con tan solo <span style="color: #ffeb3b; font-weight: bold;">$10 mil pesitos</span> puedes lograrlo 🥳</div>
+        </div>
+        
+        <div class="main-content">
+            <div class="price-section pulse">
+                <div class="money-emoji">💰</div>
+                <div class="price-label">SOLO</div>
+                <div class="price">$10.000</div>
+                <div class="price-benefit">¡Menos que un almuerzo!</div>
+            </div>
+            
+            <div class="benefits">
+                <div class="benefit-item">
+                    <div class="benefit-icon">⏰</div>
+                    <div>Paga cuando puedas, sin afán más de un mes para cancelar</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🎲</div>
+                    <div>Solo 2 cifras, más posibilidades</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🤝</div>
+                    <div>Confianza y transparencia total</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">📱</div>
+                    <div>Aparta tu número por WhatsApp</div>
+                </div>
+            </div>
+            
+            <div class="date-section">
+                <div class="date-label">SORTEO OFICIAL</div>
+                <div class="date">20 DE SEPTIEMBRE</div>
+                <div style="font-size: 12px; margin-top: 8px; opacity: 0.9;">Con el premio mayor del chuntico día</div>
+            </div>
+            
+            <div class="cta-section">
+                <div class="cta-text">¡ESCRÍBEME YA!</div>
+                <div class="cta-subtext">Los números se van rápido 🚀</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
