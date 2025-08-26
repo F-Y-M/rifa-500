@@ -331,8 +331,8 @@
 
     <script>
         // Números apartados (no cancelados)
-        const numerosApartados = [1, 4, 5, 8, 11, 14, 15, 18, 19, 21, 23, 25, 26, 27, 28, 29, 39, 49, 53, 54, 59, 63, 83, 85, 89];
-        const numerosCancelados = [65, 88]; // Ejemplo: [12, 34, 56]
+        const numerosApartados = [1, 4, 5, 8, 11, 14, 15, 16, 18, 19, 21, 23, 25, 26, 27, 28, 29, 35, 39, 49, 53, 54, 59, 63, 65, 83, 89];
+        const numerosCancelados = [65, 85, 88]; // Ejemplo: [12, 34, 56]
 
         document.getElementById('apartados').textContent = numerosApartados. length
         document.getElementById('disponibles').textContent = 100 - numerosApartados.length - numerosCancelados.length;
